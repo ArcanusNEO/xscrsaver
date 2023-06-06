@@ -1,0 +1,2 @@
+#!/bin/sh
+exec cool-retro-term -T '__DONT_TOUCH_ME__' --fullscreen -e sh -c "stty -echo; wmctrl -r __DONT_TOUCH_ME__ -b add,above; clear; unclutter --start-hidden & xscrsaver-wrapper $@; exit 0"
