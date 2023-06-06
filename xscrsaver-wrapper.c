@@ -1,4 +1,3 @@
-// cc -O3 -oxscrsaver-wrapper xscrsaver-wrapper.c -lX11
 #include <stdio.h>
 #include <stdlib.h>
 #include <termios.h>
