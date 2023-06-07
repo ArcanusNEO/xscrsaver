@@ -62,7 +62,7 @@ signed main(int argc, char* argv[]) {
     ButtonPressMask | ButtonReleaseMask | PointerMotionMask | KeyPressMask |
       KeyReleaseMask);
 
-  pid_t pid = fork();
+  pid_t pid = vfork();
   if (pid > 0) {
     intercept_input(display);
     if (waitpid(pid, NULL, WNOHANG) == 0) kill(pid, SIGTERM);
