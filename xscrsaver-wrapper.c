@@ -67,10 +67,8 @@ signed main(int argc, char* argv[]) {
     intercept_input(display);
     if (waitpid(pid, NULL, WNOHANG) == 0) kill(pid, SIGTERM);
     if (waitpid(pid, NULL, 0) < 0) goto ABORT;
-  } else if (pid == 0) {
-    execvp(argv[1], argv + 1);
-    while (1) getchar();
-  } else {
+  } else if (pid == 0) execvp(argv[1], argv + 1);
+  else {
     fprintf(stderr, "Failed to spawn child process\n");
     goto ABORT;
   }
