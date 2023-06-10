@@ -2,9 +2,9 @@
 
 test -n "$*" && scrsaver="$*" || scrsaver=genact
 
-exec cool-retro-term -T '__DONT_TOUCH_ME__' --fullscreen -e sh -c " \
+exec cool-retro-term -T '__XSCRSAVER_FEELDEAD__' --fullscreen -e sh -c " \
   stty -echo; \
-  wmctrl -r __DONT_TOUCH_ME__ -b add,above; \
+  while not wmctrl -r __XSCRSAVER_FEELDEAD__ -b add,above; do true; done; \
   clear; \
   unclutter --start-hidden & xscrsaver-wrapper ${scrsaver}; \
   exit 0; \
