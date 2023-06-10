@@ -1,6 +1,7 @@
 #!/bin/sh
 
-test -n "$*" && scrsaver="$*" || scrsaver=genact
+test -n "$*" && scrsaver="$*" || \
+scrsaver='htop -s PERCENT_NORM_CPU -M --readonly'
 
 exec cool-retro-term -T '__XSCRSAVER_FEELDEAD__' --fullscreen -e sh -c " \
   stty -echo; \
