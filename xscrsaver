@@ -5,7 +5,9 @@ scrsaver='htop -s PERCENT_NORM_CPU -M --readonly'
 
 exec cool-retro-term -T '__XSCRSAVER_FEELDEAD__' --fullscreen -e sh -c " \
   stty -echo; \
-  while not wmctrl -r __XSCRSAVER_FEELDEAD__ -b add,above; do true; done; \
+  while not wmctrl -r __XSCRSAVER_FEELDEAD__ -b add,above; do \
+    sleep 0.1; \
+  done; \
   clear; \
   unclutter --start-hidden & xscrsaver-wrapper ${scrsaver}; \
   exit 0; \
