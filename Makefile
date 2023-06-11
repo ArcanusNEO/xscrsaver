@@ -1,11 +1,8 @@
 .PHONY: all clean
 
 prefix ?= /usr
-
 CC ?= cc
-
-CPPFLAGS += -O3 -Wall -Wno-unused-function -Wno-unused-value -Wno-unused-variable
-CFLAGS +=
+CPPFLAGS += -O3
 LDFLAGS += -lX11
 
 all: xscrsaver-wrapper
