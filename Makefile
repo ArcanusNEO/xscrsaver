@@ -17,9 +17,9 @@ clean:
 	rm -rf -- *.o xscrsaver-wrapper
 
 install: xscrsaver-wrapper xscrsaver
-	install -Dm755 xscrsaver-wrapper $(prefix)/bin/xscrsaver-wrapper
-	install -Dm755 xscrsaver $(prefix)/bin/xscrsaver
+	install -Dm755 xscrsaver-wrapper "$(prefix)/bin/xscrsaver-wrapper"
+	install -Dm755 xscrsaver "$(prefix)/bin/xscrsaver"
 
 uninstall:
-	rm -rf $(prefix)/bin/xscrsaver-wrapper 
-	rm -rf $(prefix)/bin/xscrsaver
+	rm -f -- "$(prefix)/bin/xscrsaver-wrapper"
+	rm -f -- "$(prefix)/bin/xscrsaver"
