@@ -4,7 +4,10 @@ test -n "$*" && scrsaver="$*" || \
 scrsaver='htop -s PERCENT_NORM_CPU -M --readonly'
 
 # try exiting GNOME overview
-dbus-send --session --dest=org.gnome.Shell --type=method_call --print-reply /org/gnome/Shell org.freedesktop.DBus.Properties.Set string:org.gnome.Shell string:OverviewActive variant:boolean:false
+gnome_overview_status=$(dbus-send --session --dest=org.gnome.Shell --type=method_call --print-reply /org/gnome/Shell org.freedesktop.DBus.Properties.Get string:org.gnome.Shell string:OverviewActive | grep variant | grep -Eio 'true|false')
+[[ "${gnome_overview_status}"_ = "true"_ ]] && \
+dbus-send --session --dest=org.gnome.Shell --type=method_call --print-reply /org/gnome/Shell org.freedesktop.DBus.Properties.Set string:org.gnome.Shell string:OverviewActive variant:boolean:false && \
+sleep 0.5
 
 exec cool-retro-term -T '__XSCRSAVER_FEELDEAD__' --fullscreen -e sh -c " \
   stty -echo; \
