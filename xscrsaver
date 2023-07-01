@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 test -n "$*" && scrsaver="$*" || \
 scrsaver='htop -s PERCENT_NORM_CPU -M --readonly'
