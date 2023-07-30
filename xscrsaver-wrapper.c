@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-int intercept_input(Display* display) {
+signed intercept_input(Display* display) {
   KeyCode left_ctrl_code = XKeysymToKeycode(display, XK_Control_L);
   KeyCode right_ctrl_code = XKeysymToKeycode(display, XK_Control_R);
   KeyCode c_code = XKeysymToKeycode(display, XK_c);
@@ -20,28 +20,28 @@ int intercept_input(Display* display) {
     XEvent event;
     XNextEvent(display, &event);
     switch (event.type) {
-      case KeyPress :
+      case KeyPress:
         if (event.xkey.keycode == left_ctrl_code ||
           event.xkey.keycode == right_ctrl_code)
           ++ctrl;
         else if (event.xkey.keycode == c_code && ctrl > 0) return 0;
         break;
-      case KeyRelease :
+      case KeyRelease:
         if ((event.xkey.keycode == left_ctrl_code ||
               event.xkey.keycode == right_ctrl_code) &&
           ctrl > 0)
           --ctrl;
         break;
-      case ButtonPress : break;
-      case ButtonRelease :
-      case MotionNotify : return 0;
-      default : break;
+      case ButtonPress: break;
+      case ButtonRelease:
+      case MotionNotify: return 0;
+      default: break;
     }
   }
   return 1;
 }
 
-signed main(int argc, char* argv[]) {
+signed main(signed argc, char* argv[]) {
   if (argc < 2) exit(EXIT_FAILURE);
 
   Display* display = XOpenDisplay(NULL);
